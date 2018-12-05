@@ -4,7 +4,6 @@
 "use strict";
 
 import React from "react";
-import { connect } from "react-redux";
 import { Text, StyleSheet, TextInput, View } from "react-native";
 import PropTypes from "prop-types";
 
@@ -36,7 +35,11 @@ class PinPicker extends React.Component {
     super(props);
     let digits = [];
     let releaseFocus = [];
-    for (let i = 0; i < this.props.numDigits; i++) {
+    for (
+      let i = 0;
+      i < (this.props.numDigits ? this.props.numDigits : 6);
+      i++
+    ) {
       digits[i] = "";
       releaseFocus[i] = 0;
     }
@@ -143,5 +146,4 @@ PinPicker.defaultProps = {
   numDigits: 6,
 };
 
-const mapStateToProps = state => ({});
-export default connect(mapStateToProps)(PinPicker);
+export default PinPicker;
